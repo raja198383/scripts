@@ -12,3 +12,10 @@ do
       df -h | grep $path% >> /tmp/temp
       fi 
 done
+
+VALUE=`cat /tmp/temp | wc -l`
+       if [ $VALUE -ge 1 ] ; then
+       mail -s "$HOSTANAME disk space is  critical"  $mailto < /tmp/temp 
+       fi 
+
+#rm -rf /tmp/temp
